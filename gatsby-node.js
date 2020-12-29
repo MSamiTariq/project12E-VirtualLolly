@@ -2,7 +2,7 @@ const path = require('path');
 exports.createPages = async ({actions, graphql}) => {
   console.log(graphql);
     const result = await graphql(
-      `{
+      `query MyQuery{
             LOLLIES{
                 getAllLollies{
                 recipientName

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
 import Header from "../components/Header"
-import Lolly from "../components/Lolly"
+import Lolly from "../components/lolly"
 import { useQuery, gql, useMutation } from "@apollo/client"
 import { navigate } from "gatsby"
 

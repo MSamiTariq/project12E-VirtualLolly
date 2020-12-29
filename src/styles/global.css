@@ -1,0 +1,47 @@
+.lolly {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.lollipop {
+  height: 300px;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.lollyFormDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.lollyFlavorDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.colorPicker {
+  height: 80px;
+  width: 80px;
+  margin-top: -6px;
+  margin-left: -7px;
+}
+
+.colorPickerLabel {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.createLollyForm {
+  display: flex;
+  flex-direction: column;
+}

@@ -3,6 +3,8 @@ const { ApolloServer, gql } = require('apollo-server-lambda')
 const faunadb = require('faunadb')
 const q = faunadb.query;
 
+require('dotenv').config();
+
 const typeDefs = gql`
   type Query {
     getAllLollies: [Lolly]
@@ -42,7 +44,7 @@ const resolvers = {
   Mutation: {
     createLolly: async (_, args) =>{
       console.log(args)
-      const client = new faunadb.Client({secret: "fnAD945UeaACB7LVTOXTK5_0ECj8S_z5Da7QCocT"})
+      const client = new faunadb.Client({secret: process.env.GATSBY_FAUNADB_SECRET})
       const id = shortid.generate();
 
       const result = await client.query(

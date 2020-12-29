@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/header";
+import Header from "../components/Header";
 import Lolly from '../components/lolly';
 import {navigate} from 'gatsby'
 

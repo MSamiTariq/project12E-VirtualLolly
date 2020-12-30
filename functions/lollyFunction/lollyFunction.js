@@ -55,9 +55,9 @@ const resolvers = {
       )
 
       axios
-      .post("https://api.netlify.com/build_hooks/5fb55a152ea1be1e4382f33c")
+      .post("https://api.netlify.com/build_hooks/5fecd89fe8dbfb00f5ca0c2b")
       .then(function (response) {
-        // console.log(response);
+        console.log("from mutation: ", response);
       })
       .catch(function (error) {
         // console.error(error);

@@ -27,7 +27,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     getAllLollies: async () => {
-      var result = await Client.query(
+      const client = new faunadb.Client({secret: process.env.GATSBY_FAUNADB_SECRET})
+      var result = await client.query(
         q.Map(
           q.Paginate(q.Match(q.Index("allLollies"))),
           q.Lambda((x) => q.Get(x))

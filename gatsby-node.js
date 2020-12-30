@@ -22,7 +22,7 @@ exports.createPages = async ({actions, graphql}) => {
     result.data.LOLLIES.getAllLollies.map(async (lolly) => {
         await actions.createPage({
             path: `lolly/${lolly.lollyPath}`,
-            component: path.resolve(`./src/template/lollyPage.js`),
+            component: path.resolve(`./src/template/lollyTemplate.js`),
             context: {
                 lolly
             }

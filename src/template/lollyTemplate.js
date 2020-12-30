@@ -5,6 +5,7 @@ import Lolly from '../components/lolly'
 export default function LollyPage(lolly) {
 
   const {location, pageContext} = lolly;
+  console.log(location);
   return (
     <div>
 
@@ -15,7 +16,7 @@ export default function LollyPage(lolly) {
       </span>
       <div className="recievedContentContainer">
         <Lolly
-          fillLollyTop={pageContext.lolly.flavoutTop}
+          fillLollyTop={pageContext.lolly.flavourTop}
           fillLollyMiddle={pageContext.lolly.flavourMid}
           fillLollyBottom={pageContext.lolly.flavourBottom}
         />

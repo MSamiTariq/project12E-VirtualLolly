@@ -4,7 +4,7 @@ import Lolly from "../components/lolly"
 import { useQuery, gql, useMutation } from "@apollo/client"
 import { navigate } from "gatsby"
 
-const shortid = require("shortid")
+const shortid = require("shortid");
 
 const createLolllyMutation = gql`
   mutation createLolly(
@@ -14,6 +14,8 @@ const createLolllyMutation = gql`
     $flavourTop: String!
     $flavourMid: String!
     $flavourBottom: String!
+    $lollyPath: String!
+
   ) {
     createLolly(
       recipientName: $recipientName
@@ -22,6 +24,7 @@ const createLolllyMutation = gql`
       flavourTop: $flavourTop
       flavourMid: $flavourMid
       flavourBottom: $flavourBottom
+      lollyPath: $lollyPath
     ) {
       message
       lollyPath

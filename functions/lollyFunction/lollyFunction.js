@@ -19,7 +19,7 @@ const typeDefs = gql`
     lollyPath: String!
   }
   type Mutation {
-    createLolly (recipientName: String!, message: String!,sender: String!, flavourTop: String!,flavourMid: String!,flavourBottom: String!) : Lolly
+    createLolly (recipientName: String!, message: String!,sender: String!, flavourTop: String!,flavourMid: String!,flavourBottom: String!, lollyPath: String!) : Lolly
   }
 `
 
@@ -46,13 +46,13 @@ const resolvers = {
     createLolly: async (_, args) =>{
       console.log(args)
       const client = new faunadb.Client({secret: process.env.GATSBY_FAUNADB_SECRET})
-      const id = shortid.generate();
 
       const result = await client.query(
         q.Create(q.Collection("Lolly"), {
           data: args
         })
       )
+
       console.log(result);
       console.log(result.data);
       return result.data;
@@ -63,8 +63,6 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  playground:true,
-  introspection:true
 })
 
 const handler = server.createHandler()

@@ -4,6 +4,13 @@ import Lolly from "../components/lolly"
 import { useQuery, gql, useMutation } from "@apollo/client"
 import { navigate } from "gatsby"
 
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import ErrorMsg from '../Utils/ErrorMsg';
+import * as Yup from "yup";
+
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+
 const shortid = require("shortid");
 
 const createLolllyMutation = gql`
@@ -31,6 +38,19 @@ const createLolllyMutation = gql`
     }
   }
 `
+
+const initialValues = {
+  To: "",
+  From: "",
+  Message: ""
+};
+
+const validationSchema = Yup.object({
+  To: Yup.string().required("Field is required"),
+  From: Yup.string().required("Field is required"),
+  Message: Yup.string().required("Field is required"),
+});
+
 const CreateLolly = () => {
   const [colorTop, setColorTop] = useState("#d52358")
   const [colorBottom, setColorBottom] = useState("#deaa43")
@@ -40,26 +60,34 @@ const CreateLolly = () => {
   const senderRef = useRef()
   const [createLolly] = useMutation(createLolllyMutation)
 
-  const submitLollyForm = async () => {
+  const submitLollyForm = async (values, actions) => {
     const id = shortid.generate()
     const result = await createLolly({
       variables: {
-        recipientName: recipientNameRef.current.value,
-        message: messageRef.current.value,
-        sender: senderRef.current.value,
+        recipientName: values.To,
+        message: values.Message,
+        sender: values.From,
         flavourTop: colorTop,
         flavourMid: colorMid,
         flavourBottom: colorBottom,
-        lollyPath: id,
+        lollyPath: id.toString(),
       },
     })
+
+    await actions.resetForm({
+      values: {
+        To: "",
+        Message: "",
+        From : ""
+      }
+    })
     console.log("result from server", result)
-    await navigate(`/lolly/${id}`)
+    await navigate(`/lollyPage`)
   }
 
   return (
     <div className="container">
-      <Header />
+      <Header h1 = "Virtual Lolly" text = "because we all know someone who deserves some sugar"/>
       <div className="lollyFormDiv">
         <div>
           <Lolly
@@ -107,30 +135,63 @@ const CreateLolly = () => {
           </label>
         </div>
         <div className="createLollyForm">
-          <label htmlFor="recipientName">To</label>
-          <input
-            type="text"
-            id="recipientName"
-            name="recipientName"
-            ref={recipientNameRef}
-          />
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="15"
-            columns="10"
-            ref={messageRef}
-          />
-          <label htmlFor="senderName">From</label>
-          <input
-            type="text"
-            id="senderName"
-            name="senderName"
-            ref={senderRef}
-          />
+        <Formik
+              initialValues={initialValues}
+              onSubmit={submitLollyForm}
+              validationSchema={validationSchema}
+            >
+              <Form className = "form">
+                <Field
+                  as={TextField}
+                  id="To"
+                  type="text"
+                  label="To"
+                  variant="outlined"
+                  name="To"
+                  fullWidth
+                  style={{ marginTop: "10px" }}
+                />
+                <ErrorMessage name="To" component={ErrorMsg} />
+
+
+                <Field
+                  as={TextField}
+                  id="Message"
+                  type="text"
+                  label="Message"
+                  variant="outlined"
+                  multiline
+                  rows={4}
+                  name="Message"
+                  fullWidth
+                  style={{ marginTop: "10px" }}
+                />
+                <ErrorMessage name="Message" component={ErrorMsg} />
+                <Field
+                  as={TextField}
+                  id="From"
+                  type="text"
+                  label="From"
+                  variant="outlined"
+                  name="From"
+                  fullWidth
+                  style={{ marginTop: "10px" }}
+                />
+                <ErrorMessage name="To" component={ErrorMsg} />
+
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  fullWidth
+                  type="submit"
+                  style={{ marginTop: "10px", marginBottom: "10px" }}
+                  // disabled = {!Formik.dirty || !Formik.isValid}
+                >
+                  Create Lolly
+                </Button>
+              </Form>
+            </Formik>
         </div>
-        <input type="button" value="Create Lolly" onClick={submitLollyForm} />
       </div>
     </div>
   )

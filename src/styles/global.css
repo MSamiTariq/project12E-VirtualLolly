@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Dancing+Script&display=swap");
+
+body {
+  background-color: rgba(56, 48, 48, 0.8);
+  color: rgb(221, 149, 197);
+  font-family: "Audiowide", cursive;
+}
+
 .lolly {
   display: flex;
   flex-direction: row;
@@ -12,6 +21,8 @@
   width: 80%;
   margin: auto;
   text-align: center;
+  position: relative;
+  top: 60px;
 }
 
 .lollyFormDiv {
@@ -44,4 +55,47 @@
 .createLollyForm {
   display: flex;
   flex-direction: column;
+}
+
+.create-button {
+  margin-top: 15px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.lollyPage {
+  font-size: 15px;
+  border: 5px double rgb(0, 0, 0);
+  box-shadow: 5px 5px 10px rgb(102, 99, 99);
+  padding: 7px;
+  font-family: "Dancing Script", cursive;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  top: 50px;
+  margin: auto;
+  color: rgb(26, 12, 21);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vlolly {
+  width: 35%;
+  margin: auto;
+}
+
+.tempLolly {
+  background-color: rgba(105, 105, 105, 0.452);
+  width: 50%;
+  margin: auto;
+}
+
+@media screen and (max-width: 480px) {
+  .lollyPage {
+    width: 90%;
+  }
+  .vlolly {
+    width: 50%;
+  }
 }

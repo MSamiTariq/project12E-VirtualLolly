@@ -6,13 +6,16 @@ import {navigate} from 'gatsby'
 export default function Home() {
   return( 
   <div className = "container">
-    <Header />
+    <Header h1 = "Virtual Lolly" text = "because we all know someone who deserves some sugar"/>
     <div className="lolly">
+      <Lolly fillLollyTop= "#d52358" fillLollyBottom= "#deaa43" fillLollyMiddle= "#e95946" />
+      <Lolly fillLollyTop= "#d52358" fillLollyBottom= "#deaa43" fillLollyMiddle= "#e95946" />
+      <Lolly fillLollyTop= "#d52358" fillLollyBottom= "#deaa43" fillLollyMiddle= "#e95946" />
       <Lolly fillLollyTop= "#d52358" fillLollyBottom= "#deaa43" fillLollyMiddle= "#e95946" />
       <Lolly fillLollyTop= "#d52358" fillLollyBottom= "#deaa43" fillLollyMiddle= "#e95946" />
       
       </div>
-      <input type="button" value = "Add a new Lolly" onClick={
+      <input className= "create-button" type="button" value = "Add a new Lolly" onClick={
         () => {
           navigate('/createLolly')
         }

@@ -60,7 +60,7 @@ const resolvers = {
         console.log("from mutation: ", response);
       })
       .catch(function (error) {
-        // console.error(error);
+        console.error(error);
       });
 
       console.log(result);

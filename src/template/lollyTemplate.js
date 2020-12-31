@@ -11,11 +11,11 @@ export default function LollyPage(lolly) {
     <div className = "tempLolly">
 
       <h5 style= {{textAlign: 'center'}}>Your sharable link: </h5>{" "}
-      <span style= {{textAlign: 'center'}}>
+      <span style= {{display: 'block', textAlign: 'center', paddingBottom : '10px'}}>
         {" "}
         {`https://virtual-lolly-2020.netlify.app${location.pathname}/`}
       </span>
-      <div className = "vlolly">
+      <div className = "vlolly1">
         <Lolly
           fillLollyTop={pageContext.lolly.flavourTop}
           fillLollyMiddle={pageContext.lolly.flavourMid}

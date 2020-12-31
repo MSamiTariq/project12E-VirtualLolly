@@ -85,6 +85,11 @@ body {
   margin: auto;
 }
 
+.volly1 {
+  width: 15%;
+  margin: auto;
+}
+
 .tempLolly {
   background-color: rgba(105, 105, 105, 0.452);
   width: 50%;
@@ -96,6 +101,12 @@ body {
     width: 90%;
   }
   .vlolly {
+    width: 50%;
+  }
+  .tempLolly {
+    width: 90%;
+  }
+  .vlolly1 {
     width: 50%;
   }
 }

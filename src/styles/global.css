@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Dancing+Script&display=swap");
 
 body {
-  background-color: rgba(56, 48, 48, 0.8);
+  background-color: #fdf8f5;
   color: rgb(221, 149, 197);
   font-family: "Audiowide", cursive;
 }
@@ -94,6 +94,17 @@ body {
   background-color: rgba(105, 105, 105, 0.452);
   width: 50%;
   margin: auto;
+}
+
+.circular {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.vl1 {
+  position: relative;
+  left: 38%;
 }
 
 @media screen and (max-width: 480px) {

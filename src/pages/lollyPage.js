@@ -3,7 +3,11 @@ import Header from "../components/Header"
 // import { navigate } from 'gatsby';
 import gql from "graphql-tag"
 import { useQuery } from "@apollo/client"
-import Lolly from "../components/lolly"
+import Lolly from "../components/lolly";
+
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // import "./xyz.css"
 
 const GET_QUERY = gql`
@@ -19,12 +23,26 @@ const GET_QUERY = gql`
     }
   }
 `
-console.log("GETQUERY", GET_QUERY)
+console.log("GETQUERY", GET_QUERY);
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}));
 
 export default function LollyPage() {
+  const classes = useStyles();
   const { loading, error, data } = useQuery(GET_QUERY)
   if (loading) {
-    return <p>Loading</p>
+    return( 
+    <div className = {[classes.root, "circular"].join(" ")}>
+    <CircularProgress color="secondary" />
+    </div>
+    )
   }
   if (error) {
     return <p>error</p>

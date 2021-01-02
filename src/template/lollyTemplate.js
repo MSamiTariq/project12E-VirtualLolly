@@ -16,7 +16,7 @@ export default function LollyPage(lolly) {
         {`https://virtual-lolly-2020.netlify.app${location.pathname}/`}
       </span>
       <div className = "vlolly1">
-        <Lolly
+        <Lolly className = "vl1"
           fillLollyTop={pageContext.lolly.flavourTop}
           fillLollyMiddle={pageContext.lolly.flavourMid}
           fillLollyBottom={pageContext.lolly.flavourBottom}
